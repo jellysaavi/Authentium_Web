@@ -1,0 +1,137 @@
+{% extends 'base/skeleton-market-place.html' %}
+{% load static %}
+
+
+{% block page-title %}
+Authentium - Cart
+{% endblock page-title%}
+
+
+{% block body %}
+
+
+<main class="inner-shop_page">
+    <!-- banner section -->
+    <!-- ---------------order online------------------- -->
+    <section class="order common-img order-online shop-product">
+        <div class="container">
+            <div class="row">
+                <div class="heading text-center w-100 animated fadeInDown wow">
+                    <h2 class="animate__animated animate__fadeInDown"><span>Cart Detail</span></h2>
+                    <ol class="breadcrumb animate__animated animate__fadeInUp">
+                        <li class="breadcrumb-item"><a href="index.html">Home</a></li>
+                        <li class="breadcrumb-item"><a href="index.html">Shop List</a></li>
+                        <li class="breadcrumb-item"><a href="#">Cart</a></li>
+                    </ol>
+                </div>
+            </div>
+        </div>
+    </section>
+    <!-- Ecommerce 15 -->
+    <!-- Ecommerce 33 -->
+    <section class="mt=-5 pt-5 ecommerce_33 cart-page">
+        <div class="container px-xl-0">
+            <div class="table-responsive cart-table">
+                <table class="table" data-aos="zoom-in">
+                    <thead>
+                        <tr>
+                            <th scope="col">Image</th>
+                            <th scope="col">Product</th>
+                            <th scope="col">Price in $</th>
+                            <th scope="col">Quantity</th>
+                            <th scope="col">Remove</th>
+                            <th scope="col">Total in $</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr>
+                            <td>
+                                <img class="radius10" src="/media/{{object.front_image}}" alt="" />
+                            </td>
+                            <td>
+                                <span class="top ml-2">
+                                    <a href="#" class="link color-main f-18 medium title">
+                                        {{ object.product_name }}
+                                    </a>
+                                </span>
+                            </td>
+
+                            <td class="product_price">${{ object.product_price }}</td>
+                            <td>
+                                <div class="mb-20 mb-md-0 quantity justify-content-center justify-content-center">
+                                    <div class="h-40 d-flex radius20 text-center quantity_selector">
+                                        <a class="link h-full color-heading control less">-</a> <input name="quantity"
+                                            value="1" min="1" max="9999" class="input noradius p-0" />
+                                        <a class="link h-full color-heading control greater">+</a>
+                                    </div>
+                                </div>
+                            </td>
+                            <td><i class="fa fa-trash mr-2 color-blue" aria-hidden="true"></i></td>
+                            <td>{{ object.product_price }}</td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
+            <div class="row pt-20 align-items-center totals mt-3">
+                <div class="col-lg-12 col-2 d-flex flex-wrap align-items-center">
+                    <input class="promocode" type="text" name="" placeholder="Enter Promo">
+                    <div class="d-inline-block total d-flex justify-content-center">
+                        <div class="mr-3 text">Total</div>
+                        <span>$</span>
+                        <span class="js-total">{{ object.product_price }}</span>
+                    </div>
+                </div>
+            </div>
+
+            <div class="w-100 mt-5">
+                <div class="container">
+                    <div class="row">
+                        <div class="col-md-6 m-0 p-0 update-cart">
+                            <span>
+                                <a href="index.html" class="btn mt-0 lg action-2 primary-btn bg-black">Continue
+                                    Shopping</a>
+                            </span>
+                        </div>
+                        <form  method="post" enctype="multipart/form-data" action="{% url 'market_place:cart-checkout'%}">
+                            {% csrf_token %}
+                            <input type="hidden" id="product_info_id" name="product_info_id" value="{{ object.id }}">
+                            <div class="col-md-6 text-right float-right p-0">
+                                <button type="submit" class="btn mt-0 lg action-2 primary-btn">Checkout</button>
+                            </div>
+                        </form> 
+                    </div>
+                </div>
+            </div>
+
+        </div>
+    </section>
+
+
+
+    <!-- ======= Clients Section ======= -->
+    <section id="clients" class="clients">
+        <div class="container-fluid" data-aos="zoom-in">
+            <div class="row justify-content-center">
+                <div class="col-xl-10">
+                    <div class="owl-carousel clients-carousel">
+                        <img src="{% static 'assets/img/clients/client-1.png' %}" alt="" />
+                        <img src="{% static 'assets/img/clients/client-2.png' %}" alt="" />
+                        <img src="{% static 'assets/img/clients/client-3.png' %}" alt="" />
+                        <img src="{% static 'assets/img/clients/client-4.png' %}" alt="" />
+                        <img src="{% static 'assets/img/clients/client-5.png' %}" alt="" />
+                        <img src="{% static 'assets/img/clients/client-6.png' %}" alt="" />
+                        <img src="{% static 'assets/img/clients/client-7.png' %}" alt="" />
+                        <img src="{% static 'assets/img/clients/client-8.png' %}" alt="" />
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+    <!-- End Clients Section -->
+
+</main>
+
+
+
+
+{% endblock body %}

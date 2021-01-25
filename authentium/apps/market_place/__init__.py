@@ -1,0 +1,1 @@
+default_app_config = 'authentium.apps.market_place.config.ConfigMarketPlace'

@@ -1,0 +1,265 @@
+{% extends 'base/skeleton-market-place.html' %}
+{% load static %}
+
+{% block page-title %}
+Authentium - Product Detail
+{% endblock page-title%}
+
+{% block body %}
+<!-- ======= Hero Section ======= -->
+
+<main class="inner-shop_page">
+    <!-- banner section -->
+    <!-- ---------------order online------------------- -->
+    <section class="order common-img order-online shop-product">
+        <div class="container-90 container section-padding">
+            <div class="row">
+                <div class="heading text-center w-100 animated fadeInDown wow">
+                    <h2 class="animate__animated animate__fadeInDown"><span>Product Detail</span></h2>
+                    <ol class="breadcrumb animate__animated animate__fadeInUp">
+                        <li class="breadcrumb-item"><a href="index.html">Home</a></li>
+                        <li class="breadcrumb-item"><a href="shop.html">Shop</a></li>
+                        <li class="breadcrumb-item"><a href="product-detail.html">Product Detail</a></li>
+                    </ol>
+                </div>
+            </div>
+        </div>
+    </section>
+    <!-- Ecommerce 15 -->
+    <section class="my-5 py-3 product-detail ecommerce_15">
+        <div class="container px-xl-0">
+            <div class="row align-items-start align-items-lg-center" data-aos="zoom-in">
+                <div class="col-xl-5 col-lg-6 col-md-5 col-sm-12">
+                    <div class="slider">
+                        <img src="/media/{{object.back_image}}" alt="" class="radius10 w-full" />
+                    </div>
+                </div>
+                <div class="d-none d-lg-block col-lg-1"></div>
+                <article class="mt-50 mt-md-0 col-xl-5 col-lg-5 col-md-7 col-sm-12 animated fadeInDown wow">
+
+                    <h2 class="my-3 f-38 primary-color">{{ object.product_name }}</h2>
+                    <h2 class="product-price">
+                        ${{ object.product_price }}
+                    </h2>
+                    <div class="text-adaptive text-gray f-15 op-5 letter-spacing-half">
+                        {{ object.product_description }}
+                    </div>
+                    <div class="mt-4 mb-4 d-flex align-items-baseline stars_reviews">
+                        <div class="d-flex stars mr-4">
+                            <i class="fa fa-star mr-1 active"></i>
+                            <i class="fa fa-star mr-1 active"></i>
+                            <i class="fa fa-star mr-1 active"></i>
+                            <i class="fa fa-star mr-1 active"></i>
+                            <i class="fa fa-star mr-1 text-gray op-5"></i>
+                        </div>
+                        <div class="reviews op-5 text-gray float-right text-right">312.421 Reviews</div>
+                    </div>
+                    <div
+                        class="mt-20 mt-lg-0 col-lg-3 d-flex flex-wrap flex-lg-column justify-content-start justify-content-lg-between align-items-start order-md-2 order-lg-0 ecommerce_33 ml-0 pl-0">
+                        <div class="mb-5 quantity align-items-center">
+                            <div class="f-14 text-gray op-5 f-20 mr-2">Quantity</div>
+                            <div class="h-40 d-flex align-items-stretch radius20 text-center quantity_selector">
+                                <a class="link h-full color-heading control less qtyminus">-</a>
+                                <input name="quantity" value="1" min="1" max="9999" class="input noradius p-0 qty" />
+                                <a class="link h-full color-heading control greater qtyplus">+</a>
+                            </div>
+                        </div>
+                    </div>
+                    <a href="{% url 'market_place:cart' object.id %}" class="primary-btn">Add to Cart</a>
+                </article>
+            </div>
+        </div>
+    </section>
+
+    <!-- Rewards section -->
+    <section class="rewards">
+        <div class="container">
+            <div class="row">
+                <div class="offers-box w-100" data-aos="zoom-in">
+                    <img class="mr-4" src="{% static 'assets/img/promotion-rewards.png' %}" />
+                    <div class="offers-content col-md-8">
+                        <h5>Use Authentium wallet money and get more rewards.</h5>
+                        <span>Online Purchases only</span>
+                    </div>
+                    <button class="primary-btn">Learn More</button>
+                </div>
+            </div>
+        </div>
+    </section>
+    <!--end Rewards section -->
+    <!-- description section -->
+    <section class="product-info-tabs">
+        <div class="container">
+            <div class="row">
+                <ul class="nav nav-tabs" id="myTab" role="tablist">
+                    <li class="nav-item mx-1">
+                        <a class="nav-link active " id="description-tab" data-toggle="tab" href="#description"
+                            role="tab" aria-controls="description" aria-selected="true">Description</a>
+                    </li>
+                    <li class="nav-item mx-1">
+                        <a class="nav-link" id="review-tab" data-toggle="tab" href="#review" role="tab"
+                            aria-controls="review" aria-selected="false">Reviews (0)</a>
+                    </li>
+                </ul>
+                <div class="tab-content" id="myTabContent">
+                    <div class="tab-pane fade show active" id="description" role="tabpanel"
+                        aria-labelledby="description-tab">
+                        Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut
+                        labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco
+                        laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in
+                        voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat
+                        non proident, sunt in culpa qui officia deserunt mollit anim id est laborum. Sed ut perspiciatis
+                        unde omnis iste natus error sit voluptatem accusantium doloremque laudantium, totam rem aperiam.
+                    </div>
+                    <div class="tab-pane fade" id="review" role="tabpanel" aria-labelledby="review-tab">
+                        <div class="review-heading">REVIEWS</div>
+                        <p class="mb-20">There are no reviews yet.</p>
+                        <form class="review-form">
+                            <div class="form-group">
+                                <label>Your rating</label>
+                                <div class="reviews-counter">
+                                    <div class="rate">
+                                        <input type="radio" id="star5" name="rate" value="5" />
+                                        <label for="star5" title="text">5 stars</label>
+                                        <input type="radio" id="star4" name="rate" value="4" />
+                                        <label for="star4" title="text">4 stars</label>
+                                        <input type="radio" id="star3" name="rate" value="3" />
+                                        <label for="star3" title="text">3 stars</label>
+                                        <input type="radio" id="star2" name="rate" value="2" />
+                                        <label for="star2" title="text">2 stars</label>
+                                        <input type="radio" id="star1" name="rate" value="1" />
+                                        <label for="star1" title="text">1 star</label>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="form-group">
+                                <label>Your message</label>
+                                <textarea class="form-control" rows="10"></textarea>
+                            </div>
+                            <div class="row">
+                                <div class="col-md-6">
+                                    <div class="form-group">
+                                        <input type="text" name="" class="form-control" placeholder="Name*">
+                                    </div>
+                                </div>
+                                <div class="col-md-6">
+                                    <div class="form-group">
+                                        <input type="text" name="" class="form-control" placeholder="Email Id*">
+                                    </div>
+                                </div>
+                            </div>
+                            <button class="primary-btn">Submit Review</button>
+                        </form>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+    <!-- end -->
+    <!--Related Products section -->
+    <section class="fresh" data-aos="zoom-in">
+        <div class="container">
+            <div class="row">
+                <div class="section-title w-100" data-aos="fade-up">
+                    <p>Related products</p>
+                    <h2>Lorem ipsum dolor sit amet, ex vel dicant oporteat, vim habeo postulant intellegat at, est nibh
+                        mandamus</h2>
+                </div>
+
+                {% for product in products %}
+                <div class="col-lg-3 col-sm-6"  style="padding-top:15px;">
+                    <div class="product-grid">
+                        <div class="product-image">
+                            <a href="{% url 'market_place:product-detail' product.id %}">
+                                <img class="pic-1" src="/media/{{product.front_image}}" />
+                                <img class="pic-2" src="/media/{{product.back_image}}" />
+                            </a>
+                            <span class="product-new-label">New</span>
+                            <ul class="social">
+                                <li>
+                                    <a href="javascript:openModal('{{product.product_name}}','{{product.qr_code}}')">
+                                        <!-- <i class="fa fa-shopping-cart"></i> -->
+                                        <img src="{% static 'assets/img/saavi-icon.png' %}" />
+                                    </a>
+                                </li>
+                            </ul>
+                        </div>
+                        <div class="product-content">
+                            <ul class="rating">
+                                <li class="fa fa-star"></li>
+                                <li class="fa fa-star"></li>
+                                <li class="fa fa-star"></li>
+                                <li class="fa fa-star"></li>
+                                <li class="fa fa-star"></li>
+                            </ul>
+                            <h3 class="title"><a
+                                    href="{% url 'market_place:product-detail' product.id %}">{{product.product_name}}</a></h3>
+                            <div class="price">
+                                ${{product.product_price}}
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                {% endfor %}
+            </div>
+        </div>
+    </section>
+    <!--end fresh Products section -->
+
+    <!-- ======= Clients Section ======= -->
+    <section id="clients" class="clients">
+        <div class="container-fluid" data-aos="zoom-in">
+            <div class="row justify-content-center">
+                <div class="col-xl-10">
+                    <div class="owl-carousel clients-carousel">
+                        <img src="{% static 'assets/img/clients/client-1.png' %}" alt="" />
+                        <img src="{% static 'assets/img/clients/client-2.png' %}" alt="" />
+                        <img src="{% static 'assets/img/clients/client-3.png' %}" alt="" />
+                        <img src="{% static 'assets/img/clients/client-4.png' %}" alt="" />
+                        <img src="{% static 'assets/img/clients/client-5.png' %}" alt="" />
+                        <img src="{% static 'assets/img/clients/client-6.png' %}" alt="" />
+                        <img src="{% static 'assets/img/clients/client-7.png' %}" alt="" />
+                        <img src="{% static 'assets/img/clients/client-8.png' %}" alt="" />
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+    <!-- End Clients Section -->
+
+
+    <!-- Modal -->
+    <div class="modal fade" id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+        <div class="modal-dialog">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h5 class="modal-title" id="exampleModalLabel">Modal title</h5>
+                    <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                        <span aria-hidden="true">&times;</span>
+                    </button>
+                </div>
+                <div class="modal-body">
+                    <img id="img_qr" style="padding-left: 70px!important;" src="{% static 'assets/img/qr.png' %}">
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+                </div>
+            </div>
+        </div>
+    </div>
+</main>
+
+{% endblock body %}
+
+
+{% block document-js %}
+<script>
+
+    function openModal(productName, qrCode) {
+        $("#img_qr").attr("src", '/media/' + qrCode);
+        $("#exampleModalLabel").text(productName);
+        $("#exampleModal").modal()
+    }
+
+</script>
+{% endblock document-js %}

@@ -1,0 +1,252 @@
+{% load static %}
+<!DOCTYPE html>
+<html>
+
+<head>
+    <title>DELEX</title>
+
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.5.3/dist/css/bootstrap.min.css"
+        integrity="sha384-TX8t27EcRE3e/ihU7zmQxVncDAy5uIKz4rEkgIXeMed4M0jlfIDPvg6uqKI2xXr2" crossorigin="anonymous" />
+    <link
+        href="https://fonts.googleapis.com/css2?family=Poppins:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&display=swap"
+        rel="stylesheet" />
+    <link rel="stylesheet" type="text/css"
+        href="https://stackpath.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css" />
+    <link rel="stylesheet" type="text/css" href="{% static 'delex/style.css' %}" />
+    <style>
+        .error {
+            color: red;
+        }
+    </style>
+</head>
+
+<body>
+    <!-- animation -->
+    <!-- Navbar-->
+    <header class="header">
+        <nav class="navbar navbar-expand-lg navbar-light py-3 primary-bg">
+            <div class="container">
+                <!-- Navbar Brand -->
+                <a href="#" class="navbar-brand">
+                    <img src="{% static 'delex/images/born-to-tack.png' %}" alt="logo" width="150">
+                </a>
+                <h3 class="m-0 p-0 clr-white">
+                    Helping you to grow your own delivery business.</h3>
+            </div>
+        </nav>
+    </header>
+
+    <div class="container">
+        <div class="row py-5 mt-4 align-items-center">
+            <!-- Registeration Form -->
+            <div class="col-md-8 col-lg-8 ml-auto">
+                <form id="register-form">
+                    {% csrf_token %}
+                    <div class="row align-items-center d-flex">
+                        <h1 class="mb-5"><img src="{% static 'delex/images/001-graph.png' %}"> Start your own business
+                            today !</h1>
+                        <!-- First Name -->
+                        <label class="col-lg-4 mb-4">Business Name</label>
+                        <div class="input-group col-lg-8 mb-4">
+                            <input id="txt_business_name" type="text" placeholder="Business Name"
+                                class="form-control bg-white border-md" required="">
+                        </div>
+                        <!-- Last Name -->
+                        <label class="col-lg-4 mb-4">Address</label>
+                        <div class="input-group col-lg-8 mb-4">
+                            <input id="txt_address" type="text" placeholder="Address"
+                                class="form-control bg-white border-md" required="">
+                        </div>
+
+                        <!-- Phone Number -->
+                        <label class="col-lg-4 mb-4">Phone Number</label>
+                        <div class="input-group col-lg-8 mb-4">
+                            <select id="countryCode" name="countryCode" style="max-width: 80px"
+                                class="custom-select form-control bg-white border-md text-muted">
+                                <option value="">+12</option>
+                                <option value="">+10</option>
+                                <option value="">+15</option>
+                                <option value="">+18</option>
+                            </select>
+                            <input id="txt_phone" type="text" placeholder="Phone Number"
+                                class="form-control bg-white border-md border-left-0 pl-3" required="">
+                        </div>
+
+                        <!-- Email Address -->
+                        <div class="col-md-6 mb-4">
+                            <label class=" ">Email</label>
+                            <div class="input-group">
+                                <input id="txt_email" type="email" placeholder="Email Address"
+                                    class="form-control bg-white border-md" required="">
+                            </div>
+                        </div>
+                        <!-- Password -->
+                        <div class="col-md-6 mb-4">
+                            <label class="">Password</label>
+                            <div class="input-group ">
+                                <input id="txt_password" type="password" placeholder="Password"
+                                    class="form-control bg-white border-md" required="">
+                            </div>
+                        </div>
+
+                        <!-- No. of Owners -->
+                        <div class="col-lg-6 mb-4">
+                            <label class="">No. of Owners</label>
+
+                            <div class="input-group ">
+                                <select id="drpOwners" data-bind="event:{ change: numberOfOwners}" name="jobtitle"
+                                    class="form-control custom-select bg-white border-md">
+                                    <option value="1">1</option>
+                                    <option value="2">2</option>
+                                    <option value="3">3</option>
+                                    <option value="4">4</option>
+                                    <option value="5">5</option>
+                                </select>
+                            </div>
+                        </div>
+
+
+                        <!-- No. of Signatures -->
+                        <div class="col-lg-6 mb-4">
+                            <label class="">No. of Signatures</label>
+
+                            <div class="input-group ">
+                                <select id="drpSignatures" name="jobtitle"
+                                    class="form-control custom-select bg-white border-md">
+                                    <option value="">1</option>
+                                    <option value="">2</option>
+                                    <option value="">3</option>
+                                    <option value="">4</option>
+                                    <option value="">5</option>
+                                </select>
+                            </div>
+                        </div>
+
+                        <!-- ko foreach: owners -->
+                        <label class="col-lg-4 mb-4">Owner Name</label>
+                        <div class="input-group col-lg-8 mb-4">
+                            <input type="text" placeholder="Owner Name" class="form-control bg-white border-md"
+                                data-bind="value: $data.name, attr: { id: $data.id}" required="">
+                        </div>
+                        <!-- /ko -->
+
+                        <!-- Social Login -->
+                        <div class="form-group col-lg-12 mx-auto">
+                            <a href="#" id="btn-register" class="btn btn-primary btn-block py-2">
+                                <span class="font-weight-bold">Register Business</span>
+                            </a>
+                        </div>
+
+
+                    </div>
+                </form>
+            </div>
+            <!-- For Demo Purpose -->
+            <div class="col-md-4 pr-lg-4 mb-5 mb-md-0">
+                <img src="{% static 'delex/images/delivery.jpg' %}" alt="" class="img-fluid mb-3 d-none d-md-block">
+                <!-- <h1>Help you to grow</h1> -->
+
+            </div>
+
+
+        </div>
+    </div>
+    <footer class="py-2 primary-bg text-center m-auto">
+        <span class="clr-white mr-2">Powered by</span> <img src="{% static 'delex/images/logo.png' %}">
+    </footer>
+
+    <div id="loaderModal" class="modal fade" tabindex="-1">
+        <div class="modal-dialog">
+            <div class="modal-content">
+                <div class="popup-close">
+                    <button type="button" class="close" data-dismiss="modal">&times;</button>
+                </div>
+                <div class="modal-body text-center">
+                    <h1 class="modal-title">Please wait ....</h1>
+                    <img src="{% static 'borntotrack/images/loader.gif' %}" style="width: 250px;" >
+                    <p id="errorMsg">
+                    </p>
+                </div>
+            </div>
+        </div>
+    </div>
+
+
+
+    <script src="https://code.jquery.com/jquery-3.2.1.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery-validate/1.19.0/jquery.validate.min.js"></script>
+
+    <!-- KNOCKOUT -->
+    <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/knockout/3.5.0/knockout-min.js"
+        integrity="sha256-Tjl7WVgF1hgGMgUKZZfzmxOrtoSf8qltZ9wMujjGNQk=" crossorigin="anonymous"></script>
+    <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/knockout/3.5.0/knockout-debug.js"
+        integrity="sha256-M5ZomNNnrnEB2WjSbnty5GWGqq6UuAAVNnWECisgEis=" crossorigin="anonymous"></script>
+    <script type="text/javascript"
+        src="https://cdnjs.cloudflare.com/ajax/libs/knockout-validation/2.0.3/knockout.validation.min.js"
+        integrity="sha256-CuGHOn2Z+Ro6FobZvKHN5wH59wUiX6tphjCNgGreHGE=" crossorigin="anonymous"></script>
+    <script type="text/javascript"
+        src="https://cdnjs.cloudflare.com/ajax/libs/knockout-postbox/0.6.0/knockout-postbox.min.js"
+        integrity="sha256-q8zRaFV69t4thEvkA3H5kp3AdG0aiNIxWNpAyBrqAsA=" crossorigin="anonymous"></script>
+    <!-- //KNOCKOUT -->
+
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@4.5.3/dist/js/bootstrap.bundle.min.js"
+    integrity="sha384-ho+j7jyWK8fNQe+A12Hb8AhRq26LrZ/JpcUGGOn+Y7RsweNrtN/tE3MoK7ZeZDyx"
+    crossorigin="anonymous"></script>
+
+    <script src="{% static 'js/apps/site/delex.js' %}"></script>
+
+
+    <script type="text/javascript">
+        $(document).ready(function () {
+            $("#register-form").validate();
+
+            $("#btn-register").click(function () {
+
+                var form_value = $("#register-form").valid();
+                if (form_value) {
+                    url = "{% url 'api:account:register-seller' %}"
+                    data = {
+                        'email': $("#txt_email").val(),
+                        'password': $("#txt_password").val(),
+                        'city': $("#txt_address").val(),
+                        'country': $("#drpOwners").val(),
+                        'first_name': $("#txt_business_name").val(),
+                        'last_name': 'business',
+                        'mobile_number': $("#txt_phone").val(),
+                    }
+                    console.log(data);
+                    $("#loaderModal").modal("show");
+                    $.ajax({
+                        type: "POST",
+                        url: url,
+                        data: JSON.stringify(data),
+                        dataType: "json",
+                        contentType: 'application/json; charset=utf-8',
+                        success: function (data) {
+                            console.log(data);
+                            $("#loaderModal").modal("hide");
+                            window.location.href = 'delex-register-driver?id=' + data.id;
+                        },
+                        error: function (error) {
+                            errorInfo=error.responseJSON;
+                            console.log(errorInfo.email[0]);
+                            $('#errorMsg').html(errorInfo.email[0]);
+                        }
+                    });
+                }
+            });
+
+
+
+            $('input, select').on('focus', function () {
+                $(this).parent().find('.input-group-text').css('border-color', '#80bdff');
+            });
+            $('input, select').on('blur', function () {
+                $(this).parent().find('.input-group-text').css('border-color', '#ced4da');
+            });
+
+        });
+    </script>
+</body>
+
+</html>

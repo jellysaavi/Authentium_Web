@@ -1,0 +1,235 @@
+{% load static %}
+<!doctype html>
+<html>
+
+<head>
+    <meta charset="utf-8" />
+    <meta content="width=device-width, initial-scale=1.0" name="viewport" />
+    <meta content="" name="descriptison" />
+    <meta content="" name="keywords" />
+    <title>
+        {% block page-title %}
+        Authentium - Market Place
+        {% endblock page-title%}
+    </title>
+
+    <link
+        href="https://fonts.googleapis.com/css2?family=Source+Sans+Pro:ital,wght@0,200;0,300;0,400;0,600;0,700;0,900;1,200;1,300;1,400;1,600;1,700;1,900&display=swap"
+        rel="stylesheet" />
+
+
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/css/bootstrap.min.css"
+        integrity="sha384-MCw98/SFnGE8fJT3GXwEOngsV7Zt27NXFoaoApmYm81iuXoPkFOJwJ8ERdknLPMO" crossorigin="anonymous" />
+    <link href="{% static 'assets/vendor/animate.css/animate.min.css' %}" rel="stylesheet" />
+    <link href="{% static 'assets/vendor/owl.carousel/assets/owl.carousel.min.css' %}" rel="stylesheet" />
+    <link href="{% static 'assets/vendor/aos/aos.css' %}" rel="stylesheet" />
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css"
+        integrity="sha384-wvfXpqpZZVQGK6TAh5PVlGOfQNHSoD2xbE+QkPxCAFlNEevoEH3Sl0sibVcOQVnN" crossorigin="anonymous" />
+
+    <link href="{% static 'assets/css/style.css' %}" rel="stylesheet" />
+
+    {% block page-css %}
+    {% endblock page-css%}
+</head>
+
+<body>
+
+      <!-- ======= Header ======= -->
+      <div class="top-header">
+        <div class="container">
+            <div class="row d-flex align-items-center py-2">
+                <h5 class="text-center clr-white m-0 mx-auto p-0 mr-auto">Get Up to 40% OFF</h5>
+                <i class="fa fa-times clr-white" aria-hidden="true"></i>
+            </div>
+        </div>
+    </div>
+    
+    <header id="header">
+        <div class="container d-flex align-items-center">
+            <span>FREE Returns. Standard Shipping Orders $99+</span>
+            <nav class="nav-menu d-none d-lg-block ml-auto">
+                <ul>
+                    <li><a href="#about">About Us</a></li>
+                    <li><a href="#services">My Account</a></li>
+                    <li><a href="#portfolio">Blog</a></li>
+                    <li><a href="#team">Manufacturers</a></li>
+                    {% if request.user.is_authenticated %}
+                    <li><a href="{% url 'logout' %}">Logout</a></li>
+                    {% endif %}
+                    
+                </ul>
+            </nav>
+            <!-- .nav-menu -->
+        </div>
+    </header>
+    <!-- End Header -->
+
+    <!-- ======= Header ======= -->
+    <section id="main-header">
+        <div class="container d-flex align-items-center">
+            <div class="categories-dropdown position-relative">
+                <h1 class="logo">
+                    <a href="#"><img src="{% static 'assets/img/logo.png' %}" /></a>
+                </h1>
+                <div class="categories-dropdown-box position-absolute">
+                    <div class="btn-group">
+                        <button type="button" class="btn btn-default dropdown-toggle" data-toggle="dropdown">
+                            <i class="fa fa-bars mr-2" aria-hidden="true"></i> All Categories <i class="fa fa-angle-down ml-2" aria-hidden="true"></i>
+                        </button>
+                        <ul class="dropdown-menu" role="menu">
+                            <li><a href="#">Meat</a></li>
+                            <li><a href="#">Fish</a></li>
+                            <li><a href="#">Fruits & Vegetables</a></li>
+                            <li><a href="#">Bread & Bakery</a></li>
+                            <li><a href="#">Fish</a></li>
+                            <li><a href="#">Fruits & Vegetables</a></li>
+                            <li><a href="#">Bread & Bakery</a></li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+
+            <div class="header-icon header-search header-search-inline header-search-category w-lg-max pl-3 ml-auto">
+                <a href="#" class="search-toggle" role="button"><i class="icon-search-3"></i></a>
+                <form action="#" method="get">
+                    <div class="header-search-wrapper">
+                        <input type="search" class="form-control" name="q" id="q" placeholder="Search products..." required="" />
+
+                        <button class="btn icon-search-3" type="submit"></button>
+                    </div>
+                    <!-- End .header-search-wrapper -->
+                </form>
+            </div>
+
+            <div class="header-contact d-none d-lg-flex pl-4 ml-3 mr-xl-5 pr-4">
+                <img alt="phone" src="{% static 'assets/img/phone.png' %}" width="30" height="30" class="pb-1" />
+                <h6>Call us now<a href="tel:#" class="font1">+123 5678 890</a></h6>
+            </div>
+            <div class="position-relative">
+                <a href="#" class="position-relative">
+                    <i class="fa fa-shopping-cart clr-white font-28" aria-hidden="true"></i>
+                    <span class="cart-count badge-circle">2</span>
+                </a>
+                <a href="" class="font-28 clr-white ml-5">$0.00</a>
+                <div class="cart">
+                    <div id="flip">
+                        <label>Algorand</label>
+                        <span class="close-arrow"><i class="fa fa-angle-down" aria-hidden="true"></i></span>
+                    </div>
+                    <div id="panel">
+                       <h5>
+                        Algo Balance
+                       </h5>
+                       <h5>
+                           {{algo_balance}}
+                       </h5>
+                       <h5>
+                        Public Address 
+                       </h5>
+                       <label style="font-size: 11px;">
+                           {{public_address}}
+                       </label>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+    <!-- End Header -->
+
+
+    <!-- BODY  -->
+    {% block body %}
+
+    {% endblock body %}
+    <!-- //BODY  -->
+
+    <!-- ======= Footer ======= -->
+    <footer id="footer">
+        <div class="footer-top">
+            <div class="container">
+                <div class="row" data-aos="zoom-in">
+                    <div class="col-lg-4 col-md-6 footer-contact">
+                        <h3>
+                            <a href="#"><img src="{% static 'assets/img/blue-logo.png' %}" /></a>
+                        </h3>
+                        <p>
+                            When we’ve got something cool and exciting to share, we’ll let you know. <br />
+                            A108 Adam Street New York, NY 535022<br />
+                            United States <br />
+                            <br />
+                            <strong>Phone:</strong> +1 1234 5678 55<br />
+                            <strong>Email:</strong> enquiry@saavi.com.au<br />
+                        </p>
+                    </div>
+
+                    <div class="col-lg-2 col-md-6 footer-links">
+                        <h4>Useful Links</h4>
+                        <ul>
+                            <li><i class="bx bx-chevron-right"></i> <a href="#">Home</a></li>
+                            <li><i class="bx bx-chevron-right"></i> <a href="#">About us</a></li>
+                            <li><i class="bx bx-chevron-right"></i> <a href="#">Terms of service</a></li>
+                            <li><i class="bx bx-chevron-right"></i> <a href="#">Privacy policy</a></li>
+                        </ul>
+                    </div>
+
+                    <div class="col-lg-2 col-md-6 footer-links">
+                        <h4>Categories</h4>
+                        <ul>
+                            <li><i class="bx bx-chevron-right"></i> <a href="#">Meat</a></li>
+                            <li><i class="bx bx-chevron-right"></i> <a href="#">Fish</a></li>
+                            <li><i class="bx bx-chevron-right"></i> <a href="#">Vegetables </a></li>
+                            <li><i class="bx bx-chevron-right"></i> <a href="#">Cheese</a></li>
+                            <li><i class="bx bx-chevron-right"></i> <a href="#">Ice-Cream</a></li>
+                        </ul>
+                    </div>
+
+                    <div class="col-lg-4 col-md-6 footer-newsletter">
+                        <h4>Join Our Newsletter</h4>
+                        <p>When we’ve got something cool and exciting to share, we’ll let you know.</p>
+                        <form action="" method="post"><input type="email" name="email" /><input type="submit"
+                                value="Subscribe" /></form>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <div class="container d-md-flex py-4">
+            <div class="mr-md-auto text-center text-md-left align-self-center">
+                <div class="copyright">
+                    &copy; Copyright <strong> <span> SAAVI 7 </span></strong>. All Rights Reserved
+                </div>
+            </div>
+            <div class="social-links text-center text-md-right pt-3 pt-md-0">
+                <a href="#" class="twitter"><i class="fa fa-twitter" aria-hidden="true"></i></a>
+                <a href="#" class="facebook"><i class="fa fa-facebook" aria-hidden="true"></i></a>
+                <a href="#" class="instagram"><i class="fa fa-instagram" aria-hidden="true"></i></a>
+                <a href="#" class="google-plus"><i class="fa fa-google-plus" aria-hidden="true"></i></a>
+                <a href="#" class="linkedin"><i class="fa fa-linkedin" aria-hidden="true"></i></a>
+            </div>
+        </div>
+    </footer>
+    <!-- End Footer -->
+
+    <a href="#" class="back-to-top"><i class="fa fa-angle-up" aria-hidden="true"></i></a>
+
+    <script src="{% static 'assets/vendor/jquery/jquery.min.js' %}"></script>
+    <script src="{% static 'assets/vendor/bootstrap/js/bootstrap.bundle.min.js' %}"></script>
+    <script src="{% static 'assets/vendor/jquery.easing/jquery.easing.min.js' %}"></script>
+    <script src="{% static 'assets/vendor/php-email-form/validate.js' %}"></script>
+    <script src="{% static 'assets/vendor/waypoints/jquery.waypoints.min.js' %}"></script>
+    <script src="{% static 'assets/vendor/counterup/counterup.min.js' %}"></script>
+    <script src="{% static 'assets/vendor/venobox/venobox.min.js' %}"></script>
+    <script src="{% static 'assets/vendor/owl.carousel/owl.carousel.min.js' %}"></script>
+    <script src="{% static 'assets/vendor/isotope-layout/isotope.pkgd.min.js' %}"></script>
+    <script src="{% static 'assets/vendor/aos/aos.js' %}"></script>
+
+
+    <script src="{% static 'assets/js/main.js' %}"></script>
+
+    {% block document-js %}
+
+    {% endblock document-js %}
+
+</body>
+
+</html>

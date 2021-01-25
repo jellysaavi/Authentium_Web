@@ -1,0 +1,251 @@
+{% load static %}
+<!DOCTYPE html>
+<html>
+
+<head>
+    <title>Borntotrack</title>
+
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.5.3/dist/css/bootstrap.min.css"
+        integrity="sha384-TX8t27EcRE3e/ihU7zmQxVncDAy5uIKz4rEkgIXeMed4M0jlfIDPvg6uqKI2xXr2" crossorigin="anonymous" />
+    <link
+        href="https://fonts.googleapis.com/css2?family=Poppins:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&display=swap"
+        rel="stylesheet" />
+    <link rel="stylesheet" type="text/css"
+        href="https://stackpath.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css" />
+    <link rel="stylesheet" type="text/css" href="{% static 'borntotrack/style.css' %}" />
+    <style>
+        .error {
+            color: red;
+        }
+    </style>
+</head>
+
+<body>
+    <section class="track-bg">
+        <div class="container d-flex flex-column">
+            <div class="row">
+                <div class="top-header d-flex w-100 justify-content-space-between">
+                    <img class="mr-auto" src="{% static 'borntotrack/images/born-to-tack.png' %}" />
+                    <button class="btn-1 box-shadow login-redirect">Create Consignment</button>
+                </div>
+
+                <div class="mb-5 mt-5 w-100">
+                    <div class="progress-bar-wrapper"></div>
+                </div>
+            </div>
+            <div class="row bottom-row d-flex justify-content-center align-items-top map-text pt-5">
+                <div class="col-lg-9 mr-auto bottom-col">
+                    <h2 class="text-center">Bringing traceability and transparency to supply chains</h2>
+                    <form id="register-form"
+                        class="tracking-form d-flex w-100 mt-5 align-items-center justify-content-center">
+                        {% csrf_token %}
+                        <div class="col-md-8 col-sm-8 d-flex">
+                            <div class="form-group col-md-6 col-sm-6">
+                                <input type="email" id="txt_email" name="txt_email"
+                                    placeholder="Enter your email address" required=""
+                                    class="form-control box-shadow w-100" />
+                            </div>
+                            <div class="form-group col-md-6 col-sm-6">
+                                <input type="password" id="txt_password" name="txt_password"
+                                    placeholder="Enter your password" required=""
+                                    class="form-control box-shadow w-100" />
+                            </div>
+                        </div>
+                        <div class="col-md-4 col-sm-4">
+                            <div class="form-group">
+                                <button type="button" id="btn-register" class="btn-1 box-shadow model">Register
+                                    Instantly</button>
+                            </div>
+                        </div>
+                    </form>
+                    <h4>
+                        Creating new ways for primary producers and <br />
+                        sellers to generate better returns for their goods.
+                    </h4>
+                    <div class="logo">
+                        <img src="{% static 'borntotrack/images/logo.png' %}" />
+                    </div>
+                </div>
+                <div class="col-lg-3 ml-auto mobile-map">
+                    <img src="{% static 'borntotrack/images/phone.png' %}" />
+                </div>
+            </div>
+        </div>
+
+        <ul id="scene">
+            <li class="layer fifth" data-depth="0.10">
+                <div></div>
+                <div></div>
+                <div></div>
+                <div></div>
+                <div></div>
+            </li>
+            <li class="layer forth" data-depth="0.20">
+                <div></div>
+                <div></div>
+                <div></div>
+            </li>
+            <li class="layer third" data-depth="0.30">
+                <div></div>
+                <div></div>
+                <div></div>
+            </li>
+            <li class="layer second" data-depth="0.50">
+                <div></div>
+                <div></div>
+                <div></div>
+            </li>
+            <li class="layer front" data-depth="1.00">
+                <div></div>
+                <div></div>
+                <div></div>
+            </li>
+        </ul>
+    </section>
+    <div id="myModal" class="modal fade" tabindex="-1">
+        <div class="modal-dialog">
+            <div class="modal-content">
+                <div class="popup-close">
+                    <button type="button" class="close" data-dismiss="modal">&times;</button>
+                </div>
+                <div class="modal-body text-center">
+                    <i class="fa fa-check-circle" aria-hidden="true"></i>
+                    <h1 class="modal-title">Success</h1>
+                    <p>Congratulations, your account has been successfully created.</p>
+                </div>
+                <div class="d-block text-center mx-auto w-100 mb-4">
+                    <button type="button" class="btn-1 box-shadow login-redirect" data-dismiss="modal">Continue</button>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div id="loaderModal" class="modal fade" tabindex="-1">
+        <div class="modal-dialog">
+            <div class="modal-content">
+                <div class="popup-close">
+                    <button type="button" class="close" data-dismiss="modal">&times;</button>
+                </div>
+                <div class="modal-body text-center">
+                    <h1 class="modal-title">Please wait ....</h1>
+                    <img src="{% static 'borntotrack/images/loader.gif' %}" style="width: 250px;" >
+                    <p id="errorMsg">
+                    </p>
+                </div>
+            </div>
+        </div>
+    </div>
+
+
+
+
+    <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"
+        integrity="sha384-DfXdz2htPH0lsSSs5nCTpuj/zy4C+OGpamoFVy38MVBnE+IbbVYUew+OrCXaRkfj"
+        crossorigin="anonymous"></script>
+    <script src="https://code.jquery.com/jquery-3.2.1.min.js"></script>
+
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery-validate/1.19.0/jquery.validate.min.js"></script>
+
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@4.5.3/dist/js/bootstrap.bundle.min.js"
+        integrity="sha384-ho+j7jyWK8fNQe+A12Hb8AhRq26LrZ/JpcUGGOn+Y7RsweNrtN/tE3MoK7ZeZDyx"
+        crossorigin="anonymous"></script>
+    <script src="{% static 'borntotrack/js/progress-bar.js' %}"></script>
+    <script src="{% static 'borntotrack/js/app.js' %}"></script>
+
+    <!-- animation -->
+
+    <script type="text/javascript" src="https://matthew.wagerfield.com/parallax/deploy/jquery.parallax.js"></script>
+    <script type="text/javascript" src="https://ricostacruz.com/jquery.transit/jquery.transit.js?v=14845"></script>
+    <script type="text/javascript">
+        $(document).ready(function () {
+            $("#scene").parallax({
+                frictionX: 0.1,
+                frictionY: 0.1,
+            });
+
+            moveBubbles();
+            setInterval(function () {
+                moveBubbles();
+            }, 8000);
+
+            function moveBubbles() {
+                $("li div").each(function () {
+                    var random = Math.ceil(Math.random() * 100);
+                    var random2 = Math.ceil(Math.random() * 100);
+
+                    var whatWay = Math.ceil(Math.random() * 2);
+
+                    if (whatWay == 1) {
+                        $(this).transition(
+                            {
+                                x: "+=" + random + "",
+                                y: "+=" + random2 + "",
+                            },
+                            8000,
+                            "linear"
+                        );
+                    } else {
+                        $(this).transition(
+                            {
+                                x: "-=" + random + "",
+                                y: "-=" + random2 + "",
+                            },
+                            8000,
+                            "linear"
+                        );
+                    }
+                });
+            }
+        });
+    </script>
+    <script>
+        $(document).ready(function () {
+            $("#register-form").validate();
+
+            $(".login-redirect").click(function () {
+                window.location.href = "{% url 'site:login' %}"
+            });
+
+            $("#btn-register").click(function () {
+                var form_value = $("#register-form").valid();
+                if (form_value) {
+                    url = "{% url 'api:account:register-seller' %}"
+                    data = {
+                        'email': $("#txt_email").val(),
+                        'password': $("#txt_password").val(),
+                        'city': 'default',
+                        'country': 'default',
+                        'first_name': 'seller',
+                        'last_name': 'seller',
+                        'mobile_number': '0000000000'
+                    }
+                    console.log(data);
+                    $("#loaderModal").modal("show");
+                    $.ajax({
+                        type: "POST",
+                        url: url,
+                        data: JSON.stringify(data),
+                        dataType: "json",
+                        contentType: 'application/json; charset=utf-8',
+                        success: function (data) {
+                            console.log(data);
+                            $("#txt_email").val('');
+                            $("#txt_password").val('')
+                            $("#loaderModal").modal("hide");
+                            $("#myModal").modal("show");
+                            
+                        },
+                        error: function (error) {
+                            errorInfo=error.responseJSON;
+                            console.log(errorInfo.email[0]);
+                            $('#errorMsg').html(errorInfo.email[0]);
+                        }
+                    });
+                }
+            });
+
+        });
+    </script>
+</body>
+
+</html>

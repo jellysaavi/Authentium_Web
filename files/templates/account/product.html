@@ -1,0 +1,96 @@
+{% extends 'base/skeleton-app.html' %}
+{% load static %}
+
+<!-- BODY  -->
+{% block body %}
+<!--begin::Content-->
+<div class="content d-flex flex-column flex-column-fluid" id="kt_content">
+    <!--begin::Subheader-->
+    <div class="subheader py-2 py-lg-4 subheader-solid" id="kt_subheader">
+        <div class="container-fluid d-flex align-items-center justify-content-between flex-wrap flex-sm-nowrap">
+            <!--begin::Info-->
+            <div class="d-flex align-items-center flex-wrap mr-2">
+                <!--begin::Page Title-->
+                <h5 class="text-dark font-weight-bold mt-2 mb-2 mr-5">Add Product</h5>
+                <!--end::Page Title-->
+            </div>
+            <!--end::Info-->
+        </div>
+    </div>
+    <!--end::Subheader-->
+
+    <div class="row">
+        <div class="col-md-12">
+            <!--begin::Card-->
+            <div class="card card-custom gutter-b example example-compact">
+                <!--begin::Form-->
+                <form  method="post" enctype="multipart/form-data">
+                    {% csrf_token %}
+
+                    {% if form.errors %}
+                    <div class="row">
+                        <div class="col s12">
+                            {{ form_errors }}
+                        </div>
+                    </div>
+
+                    {% endif %}
+                            
+                    <div class="card-body">
+
+                        <div class="form-group row">
+                            <label class="col-2 col-form-label">Name</label>
+                            <div class="col-10">
+                                {{form.product_name}}
+                            </div>
+                        </div>
+                        
+
+                        <div class="form-group row">
+                            <label for="example-number-input" class="col-2 col-form-label">Price</label>
+                            <div class="col-10">
+                                {{form.product_price}}
+                            </div>
+                        </div>
+
+                        <div class="form-group row">
+                            <label for="example-front-image" class="col-2 col-form-label">Front Image</label>
+                            <div class="col-10">
+                                {{form.front_image}}
+                            </div>
+                        </div>
+
+                        <div class="form-group row">
+                            <label for="example-front-image" class="col-2 col-form-label">Back Image</label>
+                            <div class="col-10">
+                                {{form.back_image}}
+                            </div>
+                        </div>
+
+                        <div class="form-group row">
+                            <label for="exampleTextarea" class="col-2 col-form-label">Description</label>
+                            <div class="col-10">
+                                {{form.product_description}}
+                            </div>
+                        </div>
+                    </div>
+                    <div class="card-footer">
+                        <div class="row">
+                            <div class="col-2"></div>
+                            <div class="col-10">
+                                <button type="submit" class="btn btn-success mr-2">Submit</button>
+                                <button type="reset" class="btn btn-secondary">Cancel</button>
+                            </div>
+                        </div>
+                    </div>
+                </form>
+            </div>
+            <!--end::Card-->
+        </div>
+    </div>
+
+
+</div>
+<!--end::Content-->
+{% endblock body %}
+<!-- //BODY  -->
